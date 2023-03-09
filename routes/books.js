@@ -25,6 +25,17 @@ router.get('/:bookId', function(req, res, next) {
     res.json(findBook);
 });
 
+router.patch('/:bookId', function(req, res, next) {
+
+    let bookId = req.params.bookId;
+
+    let findBook = books.find(book => book.id == bookId);
+
+    findBook.lendingStatus = req.body.lendingStatus;
+
+    res.json(findBook);
+});
+
 router.post('/', function(req, res, next){
 /*    let newBook = {};
     newBook.title = req.body.title;
@@ -43,7 +54,9 @@ router.post('/', function(req, res, next){
 
 module.exports = router;
 
-
-
-//console.log(books);
+/**Saker som jag hade velat utveckla vidare i denna uppgift:
+ * Lämna tillbaka boken och ändra statusen i backenden.
+ * Krav på inputfälten.
+ * Ta bort bok. 
+*/
 
